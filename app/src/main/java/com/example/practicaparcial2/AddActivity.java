@@ -2,7 +2,9 @@ package com.example.practicaparcial2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,8 +39,10 @@ public class AddActivity extends AppCompatActivity {
 
     public static final String LOG_TAG = MainActivity.class.getSimpleName();
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
@@ -116,6 +120,7 @@ public class AddActivity extends AppCompatActivity {
             intent.putExtra("artist", textViewArtista.getText());
             intent.putExtra("duration", "0");
             startActivity(intent);
+            finish();
         }else{
             Toast.makeText(getApplicationContext(), "No se pudo agregar la canción", Toast.LENGTH_LONG).show();
         }
